@@ -2,6 +2,7 @@ let humanScore = 0;
 let computerScore = 0;
 let HumanSelection;
 let ComputerSelection;
+let result = '';
 
 function getComputerChoice() {
    let randomnumber = Math.floor(Math.random() * 10) + 1;
@@ -16,52 +17,87 @@ function getComputerChoice() {
    }
 }
 
-function getHumanChoice() {
-    let humanchoice = prompt("Rock,Paper or Sicssors?");
-    return humanchoice;
-}
+//function getHumanChoice() {
+    //let humanchoice = prompt("Rock,Paper or Sicssors?");
+  //  return humanchoice;
+//}
+let choice = document.querySelector("#choice");
+let res = document.querySelector(".result");
+let score = document.querySelector(".score");
+let winner = document.querySelector(".winner");
+choice.addEventListener("click", (event) => {
+    
+    let target = event.target;
+    switch(target.id) {
+        case "Rock":
+            HumanSelection = "Rock";
+            ComputerSelection = getComputerChoice();
+            playround(HumanSelection, ComputerSelection);
+            res.textContent = result;
+            
+            break;
+        case "Paper":
+            HumanSelection = "Paper";
+            ComputerSelection = getComputerChoice();
+            playround(HumanSelection, ComputerSelection);
+            res.textContent = result;
+            break;
+        case "Scissors": 
+            HumanSelection = "Scissors";
+            ComputerSelection = getComputerChoice();
+            playround(HumanSelection, ComputerSelection);
+            res.textContent = result;
+            break;        
+    }
+    score.textContent = `Human:${humanScore}    Computer:${computerScore}`;
+    if (humanScore == 5 && humanScore > computerScore) {
+            winner.textContent = "You Won the GAME!!!";
+            humanScore = 0;
+            computerScore = 0;
+    }
+    if (computerScore == 5 && computerScore > humanScore) {
+        winner.textContent = "You Lost Computer won the Game!!";
+        humanScore = 0;
+        computerScore = 0;
+    }
+})
 
 function playround(HumanChoice,ComputerChoice) {
     if (HumanSelection.toLowerCase() == "rock" && ComputerSelection == "scissors") {
-        console.log("You Win! Rock beats Scissors");
+        result = "You Win! Rock beats Scissors";
        return humanScore += 1;
     }
     else if (HumanSelection.toLowerCase() == "rock" && ComputerSelection == "paper") {
-        console.log("You Lose! Paper beat Rock");
+        result = "You Lose! Paper beat Rock";
        return computerScore += 1;
     }
     else if (HumanSelection.toLowerCase() == "paper" && ComputerSelection == "rock") {
-        console.log("You Win! Paper beats Rock");
+        result = "You Win! Paper beats Rock";
        return humanScore += 1;
     }
     else if (HumanSelection.toLowerCase() == "paper" && ComputerSelection == "scissors") {
-        console.log("You Lose! Sicssors beats Paper");
+        result = "You Lose! Sicssors beats Paper";
         return computerScore += 1;
     }
     else if (HumanSelection.toLowerCase() == "scissors" && ComputerSelection == "paper") {
-        console.log("You Win! Sicssors beat Paper");
+        result = "You Win! Sicssors beat Paper";
         return humanScore += 1
     }
     else if (HumanSelection.toLowerCase() == "scissors" && ComputerSelection == "rock") {
-        console.log("You Lose! Rock beats Sicssors");
+        result = "You Lose! Rock beats Sicssors";
         return computerScore += 1;
     }
     else if (HumanSelection.toLowerCase() == ComputerSelection) {
-        console.log("Tie!");
+        result = "Tie!";
     }
 }
 
-function playgame() {
-    let i = 0;
-    do {
-        HumanSelection = getHumanChoice();
-        ComputerSelection = getComputerChoice();
-        console.log(HumanSelection);
-        console.log(ComputerSelection);
-        playround(HumanSelection, ComputerSelection);
-        i++;
-    }
-    while(i < 5)
+/*function playgame() {
+    HumanSelection = getHumanChoice();
+    ComputerSelection = getComputerChoice();
+    console.log(HumanSelection);
+    console.log(ComputerSelection);
+    playround(HumanSelection, ComputerSelection);
     if (humanScore > computerScore) {
         console.log("You Won the GAME!!!");
     }
@@ -72,4 +108,4 @@ function playgame() {
         console.log("The Game is a Tie");
     }
 }
-playgame();
+//playgame() */
