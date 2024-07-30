@@ -16,11 +16,6 @@ function getComputerChoice() {
     return "scissors";
    }
 }
-
-//function getHumanChoice() {
-    //let humanchoice = prompt("Rock,Paper or Sicssors?");
-  //  return humanchoice;
-//}
 let choice = document.querySelector("#choice");
 let res = document.querySelector(".result");
 let score = document.querySelector(".score");
@@ -91,21 +86,3 @@ function playround(HumanChoice,ComputerChoice) {
         result = "Tie!";
     }
 }
-
-/*function playgame() {
-    HumanSelection = getHumanChoice();
-    ComputerSelection = getComputerChoice();
-    console.log(HumanSelection);
-    console.log(ComputerSelection);
-    playround(HumanSelection, ComputerSelection);
-    if (humanScore > computerScore) {
-        console.log("You Won the GAME!!!");
-    }
-    else if (humanScore < computerScore) {
-        console.log("You Lost Computer won the Game!!");
-    }
-    else {
-        console.log("The Game is a Tie");
-    }
-}
-//playgame() */
